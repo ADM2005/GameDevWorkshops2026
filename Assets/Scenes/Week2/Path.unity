@@ -235,10 +235,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 179992499}
   distance: 5
+  height: 2
   smoothSpeed: 50
   mouseSensitivity: 3
   minPitch: -20
   maxPitch: 60
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  clipEpsilon: 0.2
 --- !u!1 &282767968
 GameObject:
   m_ObjectHideFlags: 0
