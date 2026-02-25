@@ -24,9 +24,9 @@ public class CameraFollow : MonoBehaviour
         // NEW: Convert angles to a position on the sphere around the target
         Quaternion rotation = Quaternion.Euler(pitch, yaw, 0f);
         Vector3 offset = rotation * new Vector3(0f, 0f, -distance);
-        Vector3 desiredPosition = target.position + Vector3.up * height + offset;
+        Vector3 desiredPosition = target.position + offset;
 
-        transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
         transform.LookAt(target.position);
     }
 }

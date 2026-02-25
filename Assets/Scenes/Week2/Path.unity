@@ -235,8 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 179992499}
   distance: 5
-  height: 0
-  smoothSpeed: 10
+  smoothSpeed: 50
   mouseSensitivity: 3
   minPitch: -20
   maxPitch: 60
@@ -1449,6 +1448,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: 332e247bbd0234042bdaf0fd41708b8c, type: 2}
+    - target: {fileID: 6765832356549571064, guid: 286e96b7679c7ed4ea35428dc2d75047, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 221411095}
     - target: {fileID: 6765832356549571064, guid: 286e96b7679c7ed4ea35428dc2d75047, type: 3}
       propertyPath: jumpForce
       value: 15
