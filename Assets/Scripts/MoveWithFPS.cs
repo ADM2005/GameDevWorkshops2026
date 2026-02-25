@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MoveWithFPS : MonoBehaviour
 {
-    // Start is called before the first frame update
     public int fps;
     public float distPerFrame;
 
@@ -15,7 +14,7 @@ public class MoveWithFPS : MonoBehaviour
     float travelled;
     float timeSinceLastFrame;
     
-    
+    // Start is called before the first frame update
     void Start()
     {
         frameTime = 1 / (float)fps;
