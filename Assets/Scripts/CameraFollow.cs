@@ -2,20 +2,31 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;         // Drag the player here in the Inspector
+    public Transform target;
     public float distance = 5f;
-    public float height = 2f;
     public float smoothSpeed = 10f;
+
+    // NEW: Mouse orbit controls
+    public float mouseSensitivity = 3f;
+    public float minPitch = -20f;
+    public float maxPitch = 60f;
+
+    float yaw;    // Horizontal angle
+    float pitch;  // Vertical angle
 
     void LateUpdate()
     {
-        // Desired position is directly behind and above the target
-        Vector3 desiredPosition = target.position - target.forward * distance + Vector3.up * height;
+        // NEW: Read mouse input to rotate the orbit angles
+        yaw   += Input.GetAxis("Mouse X") * mouseSensitivity;
+        pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+        pitch  = Mathf.Clamp(pitch, minPitch, maxPitch);
 
-        // Smoothly move toward the desired position
+        // NEW: Convert angles to a position on the sphere around the target
+        Quaternion rotation = Quaternion.Euler(pitch, yaw, 0f);
+        Vector3 offset = rotation * new Vector3(0f, 0f, -distance);
+        Vector3 desiredPosition = target.position + Vector3.up * height + offset;
+
         transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
-
-        // Always look at the target
-        transform.LookAt(target.position + Vector3.up);
+        transform.LookAt(target.position);
     }
 }
