@@ -850,6 +850,7 @@ GameObject:
   - component: {fileID: 1761720170}
   - component: {fileID: 1761720171}
   - component: {fileID: 1761720172}
+  - component: {fileID: 1761720173}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -979,11 +980,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1761720165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deb08a29d0548684b8391c13ec3bd2df, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ba39380ae61d6a4292523aacbc49861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  acceleration: 10
+  acceleration: 100
+  jumpForce: 2
 --- !u!96 &1761720172
 TrailRenderer:
   serializedVersion: 3
@@ -1088,6 +1090,21 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &1761720173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761720165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba39380ae61d6a4292523aacbc49861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  acceleration: 5
+  jumpForce: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
