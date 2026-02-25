@@ -50,6 +50,5 @@ public class PlayerMove : MonoBehaviour
             isGrounded = true;
         }
 
-        velocity = Vector3.Reflect(velocity, normal) * 0.5f;
     }
 }

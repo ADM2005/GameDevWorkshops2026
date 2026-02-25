@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &179992499 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9099532253113208866, guid: 286e96b7679c7ed4ea35428dc2d75047, type: 3}
+  m_PrefabInstance: {fileID: 2130177877}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &221411093
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,6 +139,7 @@ GameObject:
   - component: {fileID: 221411096}
   - component: {fileID: 221411095}
   - component: {fileID: 221411094}
+  - component: {fileID: 221411097}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -208,13 +214,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 221411093}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: -0.04928895, y: 0.007589549, z: -0.00035349443, w: -0.9987557}
+  m_LocalPosition: {x: 17.39326, y: 1.9021161, z: -4.949693}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &221411097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221411093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32b2b98f2b67c84da14e7bb949b67c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 179992499}
+  distance: 5
+  height: 2
+  smoothSpeed: 1
 --- !u!1 &282767968
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,9 +1430,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1583307398913288968, guid: 286e96b7679c7ed4ea35428dc2d75047, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 1583307398913288968, guid: 286e96b7679c7ed4ea35428dc2d75047, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2215850630428118698, guid: 286e96b7679c7ed4ea35428dc2d75047, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902044743756087096, guid: 286e96b7679c7ed4ea35428dc2d75047, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 332e247bbd0234042bdaf0fd41708b8c, type: 2}
+    - target: {fileID: 6765832356549571064, guid: 286e96b7679c7ed4ea35428dc2d75047, type: 3}
+      propertyPath: jumpForce
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9099532253113208866, guid: 286e96b7679c7ed4ea35428dc2d75047, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1461,8 +1499,8 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 221411096}
   - {fileID: 1594508927}
   - {fileID: 1888156911}
   - {fileID: 2063538773}
+  - {fileID: 221411096}
   - {fileID: 2130177877}
