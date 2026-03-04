@@ -7,9 +7,8 @@ public class PlayerMove : MonoBehaviour
     public float jumpForce = 5f;
     public float turnSpeed = 10f;
 
-    // NEW: Reference to the camera so we can read its orientation
     public Camera cam;
-
+    
     Rigidbody rb;
     Vector2 input;
     Vector3 velocity;

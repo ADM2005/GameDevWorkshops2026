@@ -14,6 +14,8 @@ public class CameraFollow : MonoBehaviour
     float yaw;
     float pitch;
 
+    GameLoopManager gameLoopManager;
+    
     // The half-extents of the box derived from the camera's near clip plane
     Vector3 CameraHalfExtends
     {
@@ -30,28 +32,38 @@ public class CameraFollow : MonoBehaviour
     void Start()
     {
         cam = GetComponent<Camera>();
+        gameLoopManager = FindObjectOfType<GameLoopManager>();
     }
 
     void LateUpdate()
     {
-        yaw   += Input.GetAxis("Mouse X") * mouseSensitivity;
-        pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
-        pitch  = Mathf.Clamp(pitch, minPitch, maxPitch);
+        if (!gameLoopManager.Paused)
+        {
+            yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
+            pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+            pitch = Mathf.Clamp(pitch,minPitch,maxPitch);
 
-        Quaternion lookRotation  = Quaternion.Euler(pitch, yaw, 0f);
-        Vector3 lookDirection    = lookRotation * Vector3.forward;
-        Vector3 focusPoint       = target.position;
-        Vector3 lookPosition     = focusPoint - lookDirection * distance;
+            Quaternion lookRotation = Quaternion.Euler(pitch,yaw,0f);
+            Vector3 lookDirection = lookRotation * Vector3.forward;
+            Vector3 focusPoint = target.position;
+            Vector3 lookPosition = focusPoint - lookDirection * distance;
 
-        // BoxCast from focus point toward desired camera position
-        if (Physics.BoxCast(
-                focusPoint, CameraHalfExtends, -lookDirection, out RaycastHit hit,
-                lookRotation, distance, collisionMask
-            )) {
-            lookPosition = focusPoint - lookDirection * hit.distance;
+            // BoxCast from focus point toward desired camera position
+            if (Physics.BoxCast(
+                    focusPoint,
+                    CameraHalfExtends,
+                    -lookDirection,
+                    out RaycastHit hit,
+                    lookRotation,
+                    distance,
+                    collisionMask
+                ))
+            {
+                lookPosition = focusPoint - lookDirection * hit.distance;
+            }
+
+            transform.position = Vector3.MoveTowards(transform.position,lookPosition,smoothSpeed * Time.deltaTime);
+            transform.LookAt(focusPoint);
         }
-
-        transform.position = Vector3.MoveTowards(transform.position, lookPosition, smoothSpeed * Time.deltaTime);
-        transform.LookAt(focusPoint);
     }
 }
