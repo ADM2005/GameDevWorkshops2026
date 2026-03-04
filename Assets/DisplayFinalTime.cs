@@ -22,12 +22,9 @@ public class DisplayFinalTime : MonoBehaviour
         {
             time = 0f;
         }
-        
-        int minutes = Mathf.FloorToInt(time / 60);
-        int seconds = Mathf.FloorToInt(time) - minutes * 60;
-        int ms = Mathf.FloorToInt( (time - seconds) * 1000);
-        
-        tmp.text = $"Time: {minutes:00}:{seconds:00}:{ms:00}";
+        float bestTime = PlayerPrefs.GetFloat("best_time");
+        tmp.text = $"Time: {TimerDisplay.GetTimeString(time)}\n"
+                 + $"Best: {TimerDisplay.GetTimeString(bestTime)}\n";
     }
     
     

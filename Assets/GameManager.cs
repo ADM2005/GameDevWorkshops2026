@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,11 +10,12 @@ public class GameManager : MonoBehaviour
 
     TimerDisplay timerDisplay;
     float timeElapsed;
+    bool gameOver;
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
         timeElapsed = 0;
-
+        gameOver = false;
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -31,7 +33,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         timeElapsed += Time.deltaTime;
-        
         if(timerDisplay) timerDisplay.DisplayTime(timeElapsed);
     }
 

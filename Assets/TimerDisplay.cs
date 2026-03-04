@@ -10,11 +10,17 @@ public class TimerDisplay : MonoBehaviour
     [SerializeField] TextMeshProUGUI tmp;
     public void DisplayTime(float time)
     {
+        tmp.text = GetTimeString(time);
+    }
+
+    public static string GetTimeString(float time)
+    {
         int minutes = Mathf.FloorToInt(time / 60);
-        int seconds = Mathf.FloorToInt(time) - minutes * 60;
-        int ms = Mathf.FloorToInt( (time - seconds) * 1000);
+        int seconds = Mathf.FloorToInt(time % 60f); 
+        int ms = Mathf.FloorToInt( (time - Mathf.Floor(time)) * 1000);
         
-        tmp.text = $"{minutes:00}:{seconds:00}:{ms:00}";
+        string outString = $"{minutes:00}:{seconds:00}:{ms:00}";
+        return outString;
     }
 
     // Update is called once per frame
